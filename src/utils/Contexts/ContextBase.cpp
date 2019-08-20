@@ -29,6 +29,7 @@ ContextBase::ContextBase()
   _writeB(false),
   _leftJoin(false),
   _writeCount(false),
+  _writeCountsPerDatabase(false),
   _writeOverlap(false),
   _writeAllOverlap(false),
   _haveFractionA(false),
@@ -271,7 +272,7 @@ bool ContextBase::isValidState()
 		return false;
 	}
 	if (getObeySplits()) {
-		_splitBlockInfo = new BlockMgr(_overlapFractionA, _reciprocalFraction);
+		_splitBlockInfo = new BlockMgr(_overlapFractionA, _overlapFractionB, _reciprocalFraction);
 	}
 	if (hasColumnOpsMethods()) {
 
